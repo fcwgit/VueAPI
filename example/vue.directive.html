@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive自定义指令</title>    
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive自定义指令</h1>
+    <hr>
+    <div id="app">
+
+        <div v-jspang="color">{{num}}</div>
+        <p>
+            <!-- <button v-on:click="add">add</button> -->
+            <button @click="add">add</button>
+        </p>
+
+    </div>
+    <script type="text/javascript">
+        Vue.directive("jspang",function(el,binding){
+            console.log(el);
+            console.log(binding);
+            console.log(binding.name);
+            console.log(binding.value);
+            console.log(binding.expression);
+            el.style="color:" + binding.value;
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'HelloWorld',
+                num:6,
+                color:'red'
+            },
+            methods:{
+                add:function(){
+                    return this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
