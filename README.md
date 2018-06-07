@@ -107,3 +107,31 @@ vm.arr[1] = 'ddd'; vue无法监听到虚拟DOM 通过数组下标修改数组的
 
 Vue.set的用法
 Vue.set(vm.arr,1,'ddd');
+
+
+==============================
+beforeCreate:function(){
+                console.log('beforeCreate');
+            },
+            created:function(){
+                console.log('created');
+            },
+            beforeMount:function(){
+                console.log('beforeMount');
+            },
+            mounted:function(){
+                console.log('mounted');
+            },
+            beforeUpdate:function(){
+                console.log('beforeUpdate');
+            },
+            updated:function(){
+                console.log('updated');
+            }
+
+
+
+function destroy(){
+            vm.$destroy();
+        }
+页面销毁
