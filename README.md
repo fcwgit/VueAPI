@@ -135,3 +135,40 @@ function destroy(){
             vm.$destroy();
         }
 页面销毁
+
+
+
+==============================
+选项模板
+template:`
+                <h2 style="color:red">我是选项模板</h2>
+            `
+
+标签模板
+<template id="dd2">
+        <h2 style="color:red">我是template标签模板</h2>
+    </template>
+
+var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'helloworld'
+            },
+            template:'#dd2'
+
+
+script标签模板
+<script type="x-template" id="dd3">
+        <h2 style="color:red">我是script标签模板</h2>
+    </script>
+
+var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'helloworld'
+            },
+            template:'#dd3'
+
+
+
+            
