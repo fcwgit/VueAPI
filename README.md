@@ -38,3 +38,50 @@ Vue.directive("jspang",function(el,binding){
         
  不用加v-，vue自动给加前缀
  <div v-jspang="color">{{num}}</div>
+
+8、生命周期
+
+//生命周期方法
+        Vue.directive("jspang",{
+            bind:function(el,binding){
+                console.log('1 - bind');
+                el.style = "color:" + binding.value;
+            },
+            inserted:function(){
+                console.log('2 - inserted');
+            },
+            update:function(){
+                console.log('3 - update');
+            },
+            componentUpdated:function(){
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){
+                console.log('5 - unbind');
+            }
+        });
+
+
+ ==========================================
+
+绑定标签、id
+<author>
+    </author>
+    <div id="author"></div>
+var authorExtend = Vue.extend({
+            template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+            data:function(){
+                return {
+                    authorName:'jspang',
+                    authorURL:'http://jspang.com'
+                }
+            }
+        });
+
+        //使用标签的模式
+        new authorExtend().$mount("author");
+        // 使用id模式
+        new authorExtend().$mount("#author");
+
+
+

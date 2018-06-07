@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ue.extend 扩展实例构造器</title>    
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.extend 扩展实例构造器</h1>
+    <hr>
+    <author>
+    </author>
+    <div id="author"></div>
+
+    <script type="text/javascript">
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+            data:function(){
+                return {
+                    authorName:'jspang',
+                    authorURL:'http://jspang.com'
+                }
+            }
+        });
+
+        //使用标签的模式
+        new authorExtend().$mount("author");
+        // 使用id模式
+        new authorExtend().$mount("#author");
+    </script>
+</body>
+</html>
