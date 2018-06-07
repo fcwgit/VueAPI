@@ -17,17 +17,40 @@
             <!-- <button v-on:click="add">add</button> -->
             <button @click="add">add</button>
         </p>
-
     </div>
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
     <script type="text/javascript">
-        Vue.directive("jspang",function(el,binding){
-            console.log(el);
-            console.log(binding);
-            console.log(binding.name);
-            console.log(binding.value);
-            console.log(binding.expression);
-            el.style="color:" + binding.value;
-        })
+        // 
+        // Vue.directive("jspang",function(el,binding){
+        //     console.log(el);
+        //     console.log(binding);
+        //     console.log(binding.name);
+        //     console.log(binding.value);
+        //     console.log(binding.expression);
+        //     el.style="color:" + binding.value;
+        // })
+
+        //生命周期方法
+        Vue.directive("jspang",{
+            bind:function(el,binding){
+                console.log('1 - bind');
+                el.style = "color:" + binding.value;
+            },
+            inserted:function(){
+                console.log('2 - inserted');
+            },
+            update:function(){
+                console.log('3 - update');
+            },
+            componentUpdated:function(){
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){
+                console.log('5 - unbind');
+            }
+        });
         var app = new Vue({
             el:'#app',
             data:{
@@ -37,10 +60,14 @@
             },
             methods:{
                 add:function(){
-                    return this.num++;
+                    return this.num += 1000;
                 }
             }
         })
+
+        function unbind(){
+            app.$destroy();
+        }
     </script>
 </body>
 </html>
