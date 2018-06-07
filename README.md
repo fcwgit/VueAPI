@@ -62,7 +62,7 @@ Vue.directive("jspang",function(el,binding){
         });
 
 
- ==========================================
+
 
 绑定标签、id
 <author>
@@ -84,4 +84,26 @@ var authorExtend = Vue.extend({
         new authorExtend().$mount("#author");
 
 
+ ==========================================
+ 在构造器外面声明数据，然后赋值给构造器
+ var outData = {
+            count:1,
+            // goods:'car'
+            arr:['aaa','bbb','ccc']
+        }
+        var vm = new Vue({
+            el:'#app',
+            data:outData
+        });
+通过三种方法修改构造器外面的值
+        function add(){
+            // vm.count++;
+            // Vue.set(outData,'count',5);
+            // outData.count++;
+            // vm.arr[1] = 'ddd';
+            Vue.set(vm.arr,1,'ddd');
+        }
+vm.arr[1] = 'ddd'; vue无法监听到虚拟DOM 通过数组下标修改数组的情况
 
+Vue.set的用法
+Vue.set(vm.arr,1,'ddd');
