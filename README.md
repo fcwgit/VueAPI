@@ -170,5 +170,34 @@ var vm = new Vue({
             template:'#dd3'
 
 
+==============component1================
+一、全局化注册组件
+全局化就是在构造器的外部用Vue.component来注册，我们注册现在就注册一个<jspang></jspang>的组件来体验一下。
+//注册全局组件
+        Vue.component('jspang',{
+            template:`<div style="color:red;">全局化注册的jspang标签</div>`
+        })
+        var app=new Vue({
+            el:'#app',
+            data:{
+            }
+        })
+<div id="app">
+        <jspang></jspang>
+    </div>
 
-            
+注意：<jspang></jspang>只能在var app=new Vue({})对应的标签内部  
+
+二、局部注册组件
+var app=new Vue({
+            el:'#app',
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">局部注册的panda标签</div>`
+                }
+            }
+        })
+panda组件只能在 <div id="app"> 内部使用，在组件<div id="ppa"> 内部是无效的
+
+三、组件和指令的区别
+组件注册的是一个标签，而指令注册的是已有标签里的一个属性。在实际开发中我们还是用组件比较多，指令用的比较少。因为指令看起来封装的没那么好，这只是个人观点。
