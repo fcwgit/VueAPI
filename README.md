@@ -285,6 +285,39 @@ v-bind 可以使用 :代替
     </div>
 
 
+==============component4 标签组件================
+<component></component> 
+vue默认的组件
+
+通过绑定指定组件
+<component v-bind:is="who"></component>
+
+使用who指定使用的组件
+var componentA = {
+            template:`<div style="color:red">I'm componentA!</div>`
+        }
+        var componentB = {
+            template:`<div style="color:green">I'm componentB!</div>`
+        }
+        var componentC = {
+            template:`<div style="color:pink">I'm componentC!</div>`
+        }
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                who:'componentA'
+            },
+            components:{
+                "componentA":componentA,
+                "componentB":componentB,
+                "componentC":componentC
+            }
+        })
+动态根据data的值选择不同的Component
+
+
+
+
 
 
 
