@@ -201,3 +201,66 @@ panda组件只能在 <div id="app"> 内部使用，在组件<div id="ppa"> 内�
 
 三、组件和指令的区别
 组件注册的是一个标签，而指令注册的是已有标签里的一个属性。在实际开发中我们还是用组件比较多，指令用的比较少。因为指令看起来封装的没那么好，这只是个人观点。
+
+
+
+
+==============component2================
+定义有属性的组件
+
+定义局部组件
+<div id="app">
+
+        <panda here="china">
+
+        </panda>
+    </div>
+components:{
+                "panda":{
+                    template:'<div style="color:green">panda from {{here}}</div>',
+                    props:['here']
+                }
+            }
+不支持中划线，统一使用驼峰
+<panda from-here="sichuan">
+
+        </panda>
+components:{
+                "panda":{
+                    template:'<div style="color:green">panda from {{fromHere}}</div>',
+                    props:['fromHere']
+                }
+            }
+
+注意：建议属性不要带 - 
+
+使用data，项目中常用的方式
+var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'China'
+            },
+
+需要使用v-bind绑定
+<panda v-bind:from-here="message">
+
+        </panda>
+
+v-bind 可以使用 :代替
+<panda :from-here="message">
+
+        </panda>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

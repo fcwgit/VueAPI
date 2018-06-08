@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component props</title>    
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component props</h1>
+    <hr>
+    <div id="app">
+
+        <panda here="china">
+
+        </panda>
+
+        <panda v-bind:from-here="message">
+
+        </panda>
+    </div>
+    <script type="text/javascript">
+        // Vue.component('jspang',{
+        //     template:'<div style="color:red">我是全局的组件</div>';
+        // })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'China'
+            },
+            components:{
+                "panda":{
+                    template:'<div style="color:green">panda from {{fromHere}}</div>',
+                    props:['fromHere']
+                }
+            }
+        })
+    </script>
+</body>
+</html>
