@@ -252,9 +252,37 @@ v-bind 可以使用 :代替
         </panda>
 
 
+==============component3 父子组件================
+子组件要写在前面
+// 子组件
+        var cityComponent={
+            template:`
+                <div style="color:green">sichuan of china</div>
+            `
+        }
+        //父组件 ，在父组件中引用子组件
+        var pandaComponent ={
+            template:`
+                <div>
+                    <p>panda from chian</p>
+                    <city></city>
+                </div>
+            `,
+            components:{
+                "city":cityComponent
+            }
+        }
+        
+        var vm = new Vue({
+            el:'#app',
+            components:{
+                "panda":pandaComponent
+            }
+        })
+<div id="app">
 
-
-
+        <panda></panda>
+    </div>
 
 
 
